@@ -4,9 +4,16 @@ from collabostory.models import Story, Sentence
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 
-def index(request):
+def index(request, search_param=""):
 	# list all the stories in alphabetical order by title
-	stories_list = Story.objects.order_by('id')
+	stories_list = []
+	if (search_param==""):
+		stories_list = Story.objects.order_by('id')
+	else:
+		stories = Story.objects.all()
+		for story in stories:
+			if search_param.lower() in story.title.lower():
+				stories_list.append(story)
 	context = {'stories_list': stories_list}
 	return render(request, 'collabostory/index.html', context)
 
@@ -30,3 +37,10 @@ def addstory(request):
 	s = Story(title=request.POST['title'])
 	s.save()
 	return HttpResponseRedirect(reverse('collabostory:story', args=(s.id, )))
+
+def searchstory(request):
+	title_comp = request.POST['title_val']
+	if title_comp=="":
+		return HttpResponseRedirect(reverse('collabostory:index'))
+	else:
+		return HttpResponseRedirect(reverse('collabostory:index', args=(title_comp, )))

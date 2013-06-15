@@ -7,4 +7,6 @@ urlpatterns = patterns('',
     url(r'^(?P<story_id>\d+)/$', views.story, name='story'),
     url(r'^addstory/$', views.addstory, name='addstory'),
     url(r'^(?P<story_id>\d+)/add/$', views.add, name='add'),
+    url(r'^searchstory/$', views.searchstory, name='searchstory'),
+    url(r'^(?P<search_param>\w+)/$', views.index, name='index'),
 )
