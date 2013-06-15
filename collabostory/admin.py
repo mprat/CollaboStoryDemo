@@ -1,4 +1,12 @@
 from django.contrib import admin
-from collabostory.models import Story
+from collabostory.models import Story, Sentence
 
-admin.site.register(Story)
+class SentencesInline(admin.StackedInline):
+	model=Sentence
+	extra=2
+
+class StoryAdmin(admin.ModelAdmin):
+	fields = ['title']
+	inlines = [SentencesInline]
+
+admin.site.register(Story, StoryAdmin)
