@@ -25,3 +25,8 @@ def add(request, story_id):
 	s = Sentence(story=Story.objects.get(id=story_id), text=new_sentence)
 	s.save()
 	return HttpResponseRedirect(reverse('collabostory:story', args=(story_id, )))
+
+def addstory(request):
+	s = Story(title=request.POST['title'])
+	s.save()
+	return HttpResponseRedirect(reverse('collabostory:story', args=(s.id, )))

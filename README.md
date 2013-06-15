@@ -3,10 +3,7 @@ CollaboStoryDemo
 
 Todo:
 * Be able to search for a story by name
-* Get users to add sentences to a story
 * Add a story on the front page
-* Be able to add a story in the admin interface without adding sentences. What's up with the text field anyway?
-* Sentences don't have to be unique
 
 
 Philosophical questions about django: 
