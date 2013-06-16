@@ -44,3 +44,17 @@ def searchstory(request):
 		return HttpResponseRedirect(reverse('collabostory:index'))
 	else:
 		return HttpResponseRedirect(reverse('collabostory:index', args=(title_comp, )))
+
+def upvote(request):
+	story_id = request.POST['story_id']
+	story = Story.objects.get(id=story_id)
+	story.upvotes += 1
+	story.save()
+	return HttpResponseRedirect(reverse('collabostory:story', args=(story_id, )))
+
+def downvote(request):
+	story_id = request.POST['story_id']
+	story = Story.objects.get(id=story_id)
+	story.downvotes += 1
+	story.save()
+	return HttpResponseRedirect(reverse('collabostory:story', args=(story_id, )))
