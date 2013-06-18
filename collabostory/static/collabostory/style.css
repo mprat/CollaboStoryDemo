@@ -1,0 +1,47 @@
+body{
+	background-color: #d0e4fe;
+	margin:0;
+	padding:0;
+	color:#000;
+}
+
+h1{
+	color:orange;
+	text-align:center;
+}
+
+h2 {
+	color: green;
+}
+
+td{
+	text-align: center;
+}
+
+p { 
+font-family: "Georgia";
+}
+
+#wrap {
+	width:800px;
+	margin:0 auto;
+	background:#99c;
+}
+
+#main {
+    float:right;
+    width:480px;
+    /*background:#9c9;*/
+    padding:10px;
+}
+
+#sidebar {
+    float:left;
+    width:280px;
+    background:#c9c;
+    padding:10px;
+}
+
+#storyelem{
+	background:#c9c;
+}
